@@ -9,6 +9,9 @@ environment{
 }
     stages {
         stage('build') {
+            steps{
+                sh 'echo $PATH'
+            }
             steps {
                 sh 'mvn clean deploy'
             }
