@@ -13,7 +13,15 @@ environment{
                 sh 'mvn clean deploy -Dmaven.test.skip=true'
             }
         }
-    stage('SonarQube analysis') {
+    
+        stage("test"){
+            steps{
+                echo "----------- unit test started ----------"
+                sh 'mvn surefire-report:report'
+                 echo "----------- unit test Complted ----------"
+            }
+        }    
+        stage('SonarQube analysis') {
     environment {
       scannerHome = tool 'sonar-scanner'
     }
